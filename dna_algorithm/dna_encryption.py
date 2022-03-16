@@ -1,4 +1,5 @@
 import random
+import binascii
 
 charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
@@ -20,7 +21,7 @@ if(len(ascii_inp_txt) % 2 != 0):
     ascii_otp = ascii_otp.zfill(len(ascii_otp)+1)
 
 print(ascii_inp_txt)
-print(ascii_otp)
+#print(ascii_otp)
 
 def xor(a, b, n):
     ans = ""
@@ -30,6 +31,8 @@ def xor(a, b, n):
         else:
             ans+="1"
     return ans
+
+#Encryption
 
 encrypted_message = xor(ascii_inp_txt, ascii_otp, len(ascii_inp_txt))
 print(encrypted_message)
@@ -47,3 +50,25 @@ for i in range(0, len(encrypted_message), 2):
         enciphered_text += 'G'
 
 print(enciphered_text)
+
+#Decryption
+
+deciphered_text = ""
+
+for i in range(0, len(enciphered_text)):
+    if(enciphered_text[i] == 'A'):
+        deciphered_text += '00'
+    elif(enciphered_text[i] == 'T'):
+        deciphered_text += '01'
+    elif(enciphered_text[i] == 'C'):
+        deciphered_text += '10'
+    elif(enciphered_text[i] == 'G'):
+        deciphered_text += '11'
+
+print(deciphered_text)
+
+decrypted_message = xor(deciphered_text, ascii_otp, len(deciphered_text))
+print(decrypted_message)
+
+d = ''.join(format(chr(int(i))) for i in decrypted_message)
+print(d)
