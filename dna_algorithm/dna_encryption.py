@@ -70,5 +70,9 @@ print(deciphered_text)
 decrypted_message = xor(deciphered_text, ascii_otp, len(deciphered_text))
 print(decrypted_message)
 
-d = ''.join(format(chr(int(i))) for i in decrypted_message)
+chunks = [decrypted_message[i:i+7] for i in range(0, len(decrypted_message), 7)]
+
+print(chunks)
+
+d = ''.join(format(chr(int(i))) for i in chunks)
 print(d)
