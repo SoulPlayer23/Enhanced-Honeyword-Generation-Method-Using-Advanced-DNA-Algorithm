@@ -1,5 +1,7 @@
 import random
 import binascii
+import string
+from unicodedata import decimal
 
 charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
@@ -70,9 +72,14 @@ print(deciphered_text)
 decrypted_message = xor(deciphered_text, ascii_otp, len(deciphered_text))
 print(decrypted_message)
 
-chunks = [decrypted_message[i:i+7] for i in range(0, len(decrypted_message), 7)]
+def bintodec(binary):
+    string = int(binary, 2)
+    return string
 
-print(chunks)
+str_data = ' '
+for i in range(0, len(decrypted_message), 8):
+    temp_data = decrypted_message[i:i+8]
+    decimal_data = bintodec(temp_data)
+    str_data = str_data + chr(decimal_data)
 
-d = ''.join(format(chr(int(i))) for i in chunks)
-print(d)
+print(str_data)
