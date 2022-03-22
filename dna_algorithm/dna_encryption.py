@@ -1,17 +1,30 @@
 import random
 import binascii
 import string
-from unicodedata import decimal
+import lookuptables as l
+from unicodedata import decimal, lookup
 
 charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 input_text = input("Enter message to be encrypted:")
 
-otp = "".join(random.sample(charset, len(input_text)))
+case_flag = ''
+for i in input_text:
+    if i.isupper():
+        case_flag += '1'
+    elif i.islower():
+        case_flag +='0'
+
+print(case_flag)
+
+dna_base = ''.join(format(l.lookup1[i.upper()]) for i in input_text)
+print(dna_base)
+
+otp = "".join(random.sample(charset, len(input_text*3)))
 print(otp)
 
 ascii_inp_txt = 0
-ascii_inp_txt = ''.join(format(ord(i), '08b') for i in input_text)
+ascii_inp_txt = ''.join(format(ord(i), '08b') for i in dna_base)
 
 
 ascii_otp = 0
@@ -76,10 +89,30 @@ def bintodec(binary):
     string = int(binary, 2)
     return string
 
-str_data = ' '
+str_data = ''
 for i in range(0, len(decrypted_message), 8):
     temp_data = decrypted_message[i:i+8]
     decimal_data = bintodec(temp_data)
     str_data = str_data + chr(decimal_data)
 
 print(str_data)
+
+def get_key(val):
+    for key, value in l.lookup1.items():
+        if val == value:
+            return key
+
+output_data = ''
+for i in range(0, len(str_data), 3):
+    temp_data = str_data[i:i+3]
+    output_data = output_data + get_key(temp_data)
+
+
+final_output = ''
+for i in range(0,len(output_data)):
+     if case_flag[i]=='0':
+         final_output += output_data[i].lower()
+     elif case_flag[i] == '1':
+         final_output += output_data[i]
+    
+print(final_output)
