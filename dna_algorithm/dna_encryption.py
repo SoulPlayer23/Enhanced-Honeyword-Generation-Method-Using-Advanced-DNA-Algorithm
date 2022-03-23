@@ -14,6 +14,8 @@ for i in input_text:
         case_flag += '1'
     elif i.islower():
         case_flag +='0'
+    elif not i.isalnum():
+        case_flag += '0'
 
 print(case_flag)
 
@@ -21,7 +23,7 @@ dna_base = ''.join(format(l.lookup1[i.upper()]) for i in input_text)
 print(dna_base)
 
 otp = "".join(random.sample(charset, len(input_text*3)))
-print(otp)
+
 
 ascii_inp_txt = 0
 ascii_inp_txt = ''.join(format(ord(i), '08b') for i in dna_base)
@@ -35,8 +37,7 @@ if(len(ascii_inp_txt) % 2 != 0):
 if(len(ascii_inp_txt) % 2 != 0):
     ascii_otp = ascii_otp.zfill(len(ascii_otp)+1)
 
-print(ascii_inp_txt)
-#print(ascii_otp)
+
 
 def xor(a, b, n):
     ans = ""
@@ -64,7 +65,7 @@ for i in range(0, len(encrypted_message), 2):
     elif(encrypted_message[i] + encrypted_message[i+1] == '11'):
         enciphered_text += 'G'
 
-print(enciphered_text)
+
 
 #Decryption
 
@@ -80,10 +81,9 @@ for i in range(0, len(enciphered_text)):
     elif(enciphered_text[i] == 'G'):
         deciphered_text += '11'
 
-print(deciphered_text)
+
 
 decrypted_message = xor(deciphered_text, ascii_otp, len(deciphered_text))
-print(decrypted_message)
 
 def bintodec(binary):
     string = int(binary, 2)
