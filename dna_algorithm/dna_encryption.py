@@ -14,7 +14,7 @@ for i in input_text:
         case_flag += '1'
     elif i.islower():
         case_flag +='0'
-    elif not i.isalnum():
+    elif not i.isalnum() or i.isalnum:
         case_flag += '0'
 
 print(case_flag)
