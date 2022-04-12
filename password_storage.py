@@ -1,12 +1,20 @@
-#from authsite import tk_authsite as auths
+from authsite import tk_authsite as tas
+from honeyword_generation import honeyword_generation as hg
 import sqlite3
 import os
+
+
 
 def check_db(filename):
     return os.path.exists(filename)
 
 db_file = 'database.db'
 schema_file = 'schema.sql'
+
+username, password = tas.credentials.username, tas.credentials.password
+honeyword = []
+
+honeyword = hg.create_honeywords(password)
 
 
 # if check_db(db_file):
@@ -38,13 +46,13 @@ schema_file = 'schema.sql'
 #     print('Inserted values into the table!')
 # print('Closed the connection')
 
-with sqlite3.connect(db_file) as conn:
-    cursor = conn.cursor()
-    cursor.execute("""
-                   select * from credentials
-                   """)
-    for row in cursor.fetchall():
-        username, sweetword, honeyword1, honeyword2, honeyword3, honeyword4, honeyword5, honeyword6, honeyword7, honeyword8, honeyword9 = row
-        print(f'{username} {sweetword} {honeyword1} {honeyword2} {honeyword3} {honeyword4} {honeyword5} {honeyword6} {honeyword7} {honeyword8} {honeyword9}')
+# with sqlite3.connect(db_file) as conn:
+#     cursor = conn.cursor()
+#     cursor.execute("""
+#                    select * from credentials
+#                    """)
+#     for row in cursor.fetchall():
+#         username, sweetword, honeyword1, honeyword2, honeyword3, honeyword4, honeyword5, honeyword6, honeyword7, honeyword8, honeyword9 = row
+#         print(f'{username} {sweetword} {honeyword1} {honeyword2} {honeyword3} {honeyword4} {honeyword5} {honeyword6} {honeyword7} {honeyword8} {honeyword9}')
 
 

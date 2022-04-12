@@ -1,6 +1,11 @@
-from cgitb import text
 from tkinter import *
-import os
+import os 
+
+class credentials:
+
+    def __init__(self):
+        self.username = None
+        self.password = None
 
 def delete3():
     screen3.destroy()
@@ -39,15 +44,13 @@ def register_user():
     username_info = username.get()
     password_info = password.get()
 
-    file = open(username_info, "w")
-    file.write(username_info+"\n")
-    file.write(password_info)
-    file.close()
+    credentials.username, credentials.password = username_info, password_info
 
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
     Label(screen1, text="Registration Success").pack()
+
 
 def register():
     global screen1

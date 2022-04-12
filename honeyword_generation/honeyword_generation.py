@@ -1,25 +1,30 @@
 import random
 
-getpass = input("Enter the user passwoerd : ")
-no=input("Enter the no of honeyword :")
-honey=[]
+def create_honeywords(password):
+	no=10
+	honey=[]
+	honeyword = [None]*9
+	j=0
 
-for i in getpass:
-	honey.append(i)
-
-
-numset=''.join(format(i)for i in range(1,len(getpass)))
-for i in range(int(no)-1):
-	honeywords=''
+	for i in password:
+		honey.append(i)
 
 
-	x=random.sample(numset,1)
-	#select last n charaters from real password
+	numset=''.join(format(i)for i in range(1,len(password)))
+	for i in range(int(no)-1):
+		honeywords=''
 
-	for i in range(len(getpass)-int(x[0]),len(getpass)):
-		honey[i]=chr(random.randint(33,126))
 
-	for i in honey :
+		x=random.sample(numset,1)
+		#select last n charaters from real password
 
-		honeywords+=i
-	print(honeywords)
+		for i in range(len(password)-int(x[0]),len(password)):
+			honey[i]=chr(random.randint(33,126))
+
+		for i in honey :
+
+			honeywords+=i
+		honeyword[j] = honeywords
+		j = j + 1
+	
+	return honeyword
