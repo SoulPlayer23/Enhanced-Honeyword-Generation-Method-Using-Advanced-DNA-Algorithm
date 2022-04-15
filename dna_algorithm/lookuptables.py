@@ -88,3 +88,5 @@ lookup5 = {
 
 "0" : "CAT" , "9" : "CCT" , "7" : "CGT" , "4" : "CTT" , "Z" : "TAT" , "U" : "TCT" , "O" : "TGT" , "H" : "TTT" ,
 }
+
+lookup = {1: lookup1, 2: lookup2, 3: lookup3, 4: lookup4, 5: lookup5}
