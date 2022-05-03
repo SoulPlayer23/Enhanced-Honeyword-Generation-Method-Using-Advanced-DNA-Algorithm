@@ -54,9 +54,9 @@ def show_table():
 #     conn.execute("""CREATE TABLE credentials(
 #     username text primary key,
 #     sweetword text,
-#     otp integer,
+#     otp text,
 #     lookupno integer,
-#     case_flag integer,
+#     case_flag text,
 #     honeyword1 text,
 #     otp1 text,
 #     honeyword2 text,

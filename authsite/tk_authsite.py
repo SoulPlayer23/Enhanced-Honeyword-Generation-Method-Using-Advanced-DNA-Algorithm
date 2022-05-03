@@ -1,11 +1,19 @@
 from tkinter import *
-import os 
+import os
+
+import honeychecker as h 
 
 class credentials:
 
     def __init__(self):
         self.username = None
         self.password = None
+
+class login_credentials:
+
+    def __init__(self):
+        self.username = None
+        self.password = None        
 
 def delete3():
     screen3.destroy()
@@ -80,19 +88,12 @@ def login_verify():
     username1 = username_verify.get()
     password1 = password_verify.get()
 
+    login_credentials.username, login_credentials.password = username1, password1
+    h.honeychecker()
+
     username_entry1.delete(0, END)
     password_entry1.delete(0, END)
 
-    list_of_files = os.listdir()
-    if username1 in list_of_files:
-        file1 = open(username1, "r")
-        verify = file1.read().splitlines()
-        if password1 in verify:
-            login_success()
-        else:
-            password_not_recognised()
-    else:
-        user_not_found()
 
 def login():
     global screen2
