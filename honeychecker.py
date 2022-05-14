@@ -3,6 +3,7 @@ from authsite import tk_authsite as tas
 import sqlite3
 from dna_algorithm import dna_encryption as d
 
+
 db_file = 'database.db'
 
 usernames = []
@@ -51,6 +52,8 @@ def honeychecker():
                             print("honeyword matched") 
                             tas.password_not_recognised()  
 
+                            
     if flag == 0:
         print("Account not found")
         tas.user_not_found()
+    

@@ -1,7 +1,8 @@
-import imp
+
 import random
 
 from dna_algorithm import lookuptables as l
+
 
 charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 lookupno = random.randint(1,5)
@@ -64,7 +65,6 @@ def dna_encryption(input_text):
 
 
 def dna_decryption(enciphered_text, ascii_otp, lookupno, case_flag):
-
     #Decryption
     deciphered_text = ""
 
@@ -111,5 +111,5 @@ def dna_decryption(enciphered_text, ascii_otp, lookupno, case_flag):
             final_output += output_data[i].lower()
         elif case_flag[i] == '1':
             final_output += output_data[i]
-        
+  
     return final_output

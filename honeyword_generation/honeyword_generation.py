@@ -26,5 +26,7 @@ def create_honeywords(password):
 			honeywords+=i
 		honeyword[j] = honeywords
 		j = j + 1
+
+	print(honeyword)
 	
 	return honeyword

@@ -6,6 +6,7 @@ import os
 
 
 
+
 def check_db(filename):
     return os.path.exists(filename)
 
@@ -17,6 +18,8 @@ honeyword = []
 honeyword = hg.create_honeywords(password)
 
 enc_sweetword, ascii_otp, lookupt, case_flag = de.dna_encryption(password)
+
+
 
 enc_honeyword = [None]*len(honeyword)
 ascii_otp_honeyword = [None]*len(honeyword)
