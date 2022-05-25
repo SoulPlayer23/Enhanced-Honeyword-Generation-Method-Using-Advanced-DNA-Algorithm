@@ -51,6 +51,9 @@ def honeychecker():
                         if passw == password:
                             print("honeyword matched") 
                             tas.password_not_recognised()  
+                        else:
+                            print("Wrong Password")
+                            tas.wrong_password()
 
                             
     if flag == 0:

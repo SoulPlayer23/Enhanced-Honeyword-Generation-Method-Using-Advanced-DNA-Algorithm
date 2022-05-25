@@ -24,6 +24,9 @@ def delete4():
 def delete5():
     screen5.destroy()
 
+def delete6():
+    screen6.destroy()
+
 def login_success():
     global screen3
     screen3 = Toplevel(screen)
@@ -43,10 +46,18 @@ def password_not_recognised():
 def user_not_found():
     global screen5
     screen5 = Toplevel(screen)
-    screen5.title("Password not found")
+    screen5.title("User not found")
     screen5.geometry("150x100")
     Label(screen5, text="User not found").pack()
     Button(screen5, text="OK", command = delete5).pack()
+
+def wrong_password():
+    global screen6
+    screen6 = Toplevel(screen)
+    screen6.title("Wrong Password")
+    screen6.geometry("150x100")
+    Label(screen6, text="Wrong Password").pack()
+    Button(screen6, text="OK", command = delete6).pack()
 
 def register_user():
     username_info = username.get()
